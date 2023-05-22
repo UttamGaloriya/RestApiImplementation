@@ -1,1 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;background: #F4FBFF }
+.example-spacer{margin-left: auto;}
+.container{max-width: 1400px;margin: 50px auto;}
+.sub-heading{
+    padding: 10px;
+    background: #7d2ffb;;
+    text-align: center;
+    font-size: 30px;
+    color: #FFF;
+    letter-spacing: 0.1rem;
+    font-weight: 400;
+}
+
+.container .mat-card{padding: 8px;margin: 0px 10px;}
+//snack bar
+.error.mat-snack-bar-container{background: #cc0000;color:#ffffff ;}
+.success.mat-snack-bar-container{background: #009b58;color:#ffffff ;}
+.info.mat-snack-bar-container{background: #fff265;color:#000000 ;}
+
+.max-100{width: 100%;}
+
+
+.example-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    align-items: flex-start;
+  }
+  
+  .example-radio-button {
+    margin: 5px;
+  }
+
+
+  //table
+  //table
+.table-container{
+  th.mat-header-cell, td.mat-cell, td.mat-footer-cell {padding: 0px 20px;}
+}
+.table-container .mat-header-cell {font-size: 17px;}
+.table-container{margin: 10px 0px;}
+table.mat-table{width: 100%;}

@@ -1,0 +1,63 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>RestApiImplementation</span>
+
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+    </button>
+
+</mat-toolbar>
+
+<div class="container">
+    <mat-card>
+        <h2 class="sub-heading">Login</h2>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+
+            <!-- user name  -->
+            <mat-form-field appearance="outline" class="max-100">
+                <mat-label>User Name</mat-label>
+                <input matInput formControlName="username">
+                <mat-error *ngIf="f.username.touched && f.username.errors?.required">Enter Your Name</mat-error>
+                <mat-error *ngIf="f.username.errors?.spacesOnly && !f.username.errors?.required ">Error: Only spaces
+                    are not allowed</mat-error>
+                <mat-error *ngIf="f.username.errors?.invalidInput">Note: Use letters, numbers, and special
+                    characters</mat-error>
+            </mat-form-field>
+
+
+            <!-- password -->
+            <mat-form-field appearance="outline" class="max-100">
+                <mat-label>password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="f.password.errors">
+                    <mat-error *ngIf="f.password.errors.required">Enter your Password</mat-error>
+                    <mat-error *ngIf="f.password.errors?.spacesOnly && !f.password.errors?.required ">Error:
+                        Only spaces
+                        are not allowed</mat-error>
+                    <mat-error *ngIf="f.password.errors.minlength">Minmum leangth 8 Digit</mat-error>
+                    <mat-error *ngIf="f.password.errors.maxlength">Max leangth 40 Digit</mat-error>
+                    <mat-error *ngIf="f.password.errors.pattern">password must be minimum 8 digit
+                        lowercase,uppercase,number andSpecial characters</mat-error>
+                </mat-error>
+            </mat-form-field>
+
+
+            <!-- button  -->
+            <div class="button-div">
+                <button mat-flat-button color="primary" type="submit" [disabled]="!form.valid">Register</button>
+                <p>Not Account? <a routerLink="/account/register" color="accent">Register</a></p>
+            </div>
+
+
+        </form>
+
+    </mat-card>
+</div>
