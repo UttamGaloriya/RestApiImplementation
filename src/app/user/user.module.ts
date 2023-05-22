@@ -6,6 +6,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { TableComponent } from './table/table.component';
 import { EditComponent } from './edit/edit.component';
 import { MaterialmodualModule } from '../materialmodual/materialmodual.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { MaterialmodualModule } from '../materialmodual/materialmodual.module';
   imports: [
     CommonModule,
     UserRoutingModule,
-    MaterialmodualModule
+    MaterialmodualModule,
+    ReactiveFormsModule
   ]
 })
 export class UserModule { }

@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
       (data: any) => {
         console.log(data)
         this.alert.showNotification("congress", "ok", "success")
-        this.router.navigateByUrl('/user');
+        this.router.navigateByUrl('/user/table');
       },
       (error: any) => { console.log(error.ok, this.alert.showNotification("invalid", "ok", "error")) },
       () => console.log('HTTP request completed.')

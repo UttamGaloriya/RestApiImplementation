@@ -27,7 +27,11 @@ export class UserService {
 
   //get all user
   getAllData(): Observable<any> {
-    return this.http.get(`${this.baseURL}/users`)
+    return this.http.get(`${this.baseURL}/users/`)
+  }
+  //get user
+  getUserData(id: number): Observable<any> {
+    return this.http.get(`${this.baseURL}/users/${id}`)
   }
 
   //login user

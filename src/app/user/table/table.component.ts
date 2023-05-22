@@ -28,7 +28,8 @@ export class TableComponent implements OnInit {
 
   delete(id: number) {
     this.userServices.deleteData(id).subscribe(
-      () => { this.alert.showNotification("congress data delte", "ok", "success") }
+      () => { this.alert.showNotification("congress data delte", "ok", "success") },
+      () => { this.alert.showNotification("congress data not delte", "ok", "error") }
     )
   }
 }
