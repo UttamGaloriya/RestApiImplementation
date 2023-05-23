@@ -39,6 +39,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;background: 
   //table
 .table-container{
   th.mat-header-cell, td.mat-cell, td.mat-footer-cell {padding: 0px 20px;}
+  th.mat-header-cell{text-transform: uppercase;}
 }
 .table-container .mat-header-cell {font-size: 17px;}
 .table-container{margin: 10px 0px;}

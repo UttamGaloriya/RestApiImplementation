@@ -38,11 +38,11 @@ export class TableComponent implements OnInit {
     this.dailog.openConfirmDialog(res.firstName, res.email).afterClosed().subscribe((res => {
       if (res) {
         this.userServices.deleteData(id).subscribe(
-          (data) => { this.alert.showNotification("congratulations data delete", "ok", "success"), console.log(data) },
-          (error) => { this.alert.showNotification("data not delete", "ok", "error") }
+          (data) => { this.alert.showNotification("congratulations data deleted", "ok", "success"), console.log(data) },
+          (error) => { this.alert.showNotification("data not deleted", "ok", "error") }
         )
       } else {
-        this.alert.showNotification("congratulations data not delete", "ok", "info")
+        this.alert.showNotification("congratulations data not deleted", "ok", "info")
       }
     }))
   }
