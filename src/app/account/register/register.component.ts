@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      fisrtName: ['', [Validators.required, this.validateInput]],
+      firstName: ['', [Validators.required, this.validateInput]],
       lastName: ['', [Validators.required, this.validateInput]],
       gender: ['', [Validators.required,]],
       username: ['', [Validators.required, this.validateUser]],
@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
     if (trimmedValue === '') {
       return { spacesOnly: true };
     }
-    if (!/^[a-zA-Z][0-9]]+$/.test(trimmedValue)) {
+    if (!/^[a-zA-Z0-9]+$/.test(trimmedValue)) {
       return { invalidInput: true };
     }
     if (trimmedValue !== control.value) {
@@ -64,7 +64,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     this.userServices.postData(this.form.value).subscribe(
-      (data: any) => { console.log(data), this.alert.showNotification("congress", "ok", "success"), this.router.navigateByUrl('/account/login') },
+      (data: any) => { console.log(data), this.alert.showNotification("congratulations", "ok", "success"), this.router.navigateByUrl('/account/login') },
       (error: any) => { console.log(error) },
       () => console.log('HTTP request completed.')
     )

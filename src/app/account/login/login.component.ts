@@ -17,7 +17,11 @@ export class LoginComponent implements OnInit {
     this.form = this.fb.group({
 
       username: ['', [Validators.required, this.validateUser]],
-      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(40), Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/)]]
+      password: ['', [Validators.required,
+      //  Validators.minLength(8),
+      Validators.maxLength(40),
+        // Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/)
+      ]]
 
     })
   }
@@ -26,7 +30,7 @@ export class LoginComponent implements OnInit {
     if (trimmedValue === '') {
       return { spacesOnly: true };
     }
-    if (!/^[a-zA-Z][0-9]]+$/.test(trimmedValue)) {
+    if (!/^[a-zA-Z0-9]+$/.test(trimmedValue)) {
       return { invalidInput: true };
     }
     if (trimmedValue !== control.value) {
@@ -37,15 +41,6 @@ export class LoginComponent implements OnInit {
   get f(): { [key: string]: AbstractControl } { return this.form.controls; }
 
   onSubmit() {
-    this.userServices.login(this.form.value).subscribe(
-      (data: any) => {
-        console.log(data)
-        this.alert.showNotification("congress", "ok", "success")
-        this.router.navigateByUrl('/user/table');
-      },
-      (error: any) => { console.log(error.ok, this.alert.showNotification("invalid", "ok", "error")) },
-      () => console.log('HTTP request completed.')
-    )
-
+    this.userServices.userLogin(this.form.value)
   }
 }

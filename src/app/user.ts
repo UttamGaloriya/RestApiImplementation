@@ -1,5 +1,5 @@
 export interface userObj {
-    fisrtName: string,
+    firstName: string,
     lastName: string,
     gender: string,
     username: string,

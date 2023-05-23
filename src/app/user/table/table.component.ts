@@ -2,7 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { AlertService } from 'src/app/_services/alert.service';
+import { DailogService } from 'src/app/_services/dailog.service';
 import { UserService } from 'src/app/_services/user.service';
+import { userObj } from 'src/app/user';
 
 @Component({
   selector: 'app-table',
@@ -11,12 +13,12 @@ import { UserService } from 'src/app/_services/user.service';
 })
 export class TableComponent implements OnInit {
   dataSource!: MatTableDataSource<any>;
-
+  user: userObj | null = null
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
-  constructor(private userServices: UserService, private alert: AlertService) {
+  constructor(private userServices: UserService, private alert: AlertService, private dailog: DailogService) {
     this.userServices.getAllData()
       .subscribe(data => {
-        console.log(data)
+
         this.dataSource = new MatTableDataSource<any>(data.users);
         this.dataSource.paginator = this.paginator;
       })
@@ -27,9 +29,21 @@ export class TableComponent implements OnInit {
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'Action'];
 
   delete(id: number) {
-    this.userServices.deleteData(id).subscribe(
-      () => { this.alert.showNotification("congress data delte", "ok", "success") },
-      () => { this.alert.showNotification("congress data not delte", "ok", "error") }
+    this.userServices.getUserData(id).subscribe(
+      (res) => { this.deleteData(id, res) },
+      (error) => { this.alert.error(error) }
     )
+  }
+  deleteData(id: number, res: any) {
+    this.dailog.openConfirmDialog(res.firstName, res.email).afterClosed().subscribe((res => {
+      if (res) {
+        this.userServices.deleteData(id).subscribe(
+          (data) => { this.alert.showNotification("congratulations data delete", "ok", "success"), console.log(data) },
+          (error) => { this.alert.showNotification("data not delete", "ok", "error") }
+        )
+      } else {
+        this.alert.showNotification("congratulations data not delete", "ok", "info")
+      }
+    }))
   }
 }

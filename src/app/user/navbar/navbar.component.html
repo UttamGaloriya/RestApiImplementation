@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+    </button>
+
+
+    <a routerLink="/user" class="nav-link"><span class="company-title">RestApiImplementation</span></a>
+
+    <a routerLink="/user/table" class="nav-link">Table</a>
+
+    <span class="example-spacer"></span>
+
+    <button mat-button [matMenuTriggerFor]="menu">{{User?.username}}</button>
+    <mat-menu #menu="matMenu">
+        <!-- <button mat-menu-item>MY Profile</button> -->
+        <button mat-menu-item (click)="logOut()">Logout</button>
+    </mat-menu>
+
+</mat-toolbar>

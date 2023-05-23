@@ -1,17 +1,17 @@
+<app-navbar></app-navbar>
 <div class="container">
     <mat-card>
-
         <h2 class="sub-heading">Edit</h2>
 
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <!--  first  name  -->
             <mat-form-field appearance="outline" class="max-100">
                 <mat-label>First Name</mat-label>
-                <input matInput formControlName="username">
-                <mat-error *ngIf="f.username.touched && f.username.errors?.required">Enter Your First Name</mat-error>
-                <mat-error *ngIf="f.username.errors?.spacesOnly && !f.username.errors?.required ">Error: Only spaces
+                <input matInput formControlName="firstName">
+                <mat-error *ngIf="f.firstName.touched && f.firstName.errors?.required">Enter Your First Name</mat-error>
+                <mat-error *ngIf="f.firstName.errors?.spacesOnly && !f.firstName.errors?.required ">Error: Only spaces
                     are not allowed</mat-error>
-                <mat-error *ngIf="f.username.errors?.invalidInput">Note: Use letters, numbers, and special
+                <mat-error *ngIf="f.firstName.errors?.invalidInput">Note: Use letters, numbers, and special
                     characters</mat-error>
             </mat-form-field>
             <!-- last name  -->

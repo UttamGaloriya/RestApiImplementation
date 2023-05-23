@@ -43,3 +43,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;background: 
 .table-container .mat-header-cell {font-size: 17px;}
 .table-container{margin: 10px 0px;}
 table.mat-table{width: 100%;}
+
+//navbar
+.nav-link{color: #F4FBFF;margin: 0px 5px;text-decoration: none;}
+.nav-link:hover ,.nav-link:focus{text-decoration: underline;}
+
+//dailog box
+.confirm-dailog .daliog-btn{width: 100%;    display: flex;justify-content: space-between;align-items: center;}

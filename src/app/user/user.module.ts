@@ -7,13 +7,17 @@ import { TableComponent } from './table/table.component';
 import { EditComponent } from './edit/edit.component';
 import { MaterialmodualModule } from '../materialmodual/materialmodual.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NavbarComponent } from './navbar/navbar.component';
+import { MyprofileComponent } from './myprofile/myprofile.component';
 
 
 @NgModule({
   declarations: [
     LayoutComponent,
     TableComponent,
-    EditComponent
+    EditComponent,
+    NavbarComponent,
+    MyprofileComponent
   ],
   imports: [
     CommonModule,
